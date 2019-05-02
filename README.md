@@ -2,8 +2,8 @@
 
 This repository contains getting started guides, examples, and reference
 documentation for the SystemLink Client NuGet packages. These packages support
-.NET Standard 2.0, meaning they support both .NET Core 2.0 and .NET Framework
-4.6.1 with Visual Studio 2017 or later.
+.NET Standard 2.0. Therefore, they support both .NET Core 2.0 and .NET
+Framework 4.6.1 with Visual Studio 2017 or later.
 
 ## Client APIs
 
@@ -28,8 +28,8 @@ dotnet add package NationalInstruments.SystemLink.Clients.Tag
 
 #### .NET Framework
 
-Use the NuGet Package Manager to add a reference to the package, or the NuGet
-console:
+Use the NuGet Package Manager or the NuGet console to add a reference to the
+package:
 
 ```
 Install-Package NationalInstruments.SystemLink.Clients.Tag
