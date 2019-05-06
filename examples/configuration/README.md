@@ -9,7 +9,7 @@ Running the Example
 
 1. Download and extract the [repository source](https://github.com/ni/systemlink-client-docs/archive/master.zip)
 2. Install the [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core)
-3. Open a command-prompt within this directory and use the `dotnet run` command
+3. Navigate to the example's directory and use the [`dotnet run` command](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-run?tabs=netcore21)
 
 To run the example with a different configuration, use one of the following
 commands instead:

@@ -37,7 +37,8 @@ Install-Package NationalInstruments.SystemLink.Clients.Tag
 
 ### Examples
 
-See the **TODO** directory to browse additional code examples.
+See the [examples directory](examples/README.md) to browse additional code
+examples.
 
 ```csharp
 using System;
