@@ -30,5 +30,5 @@ Examples
 
 ### Configuration
 
-- [configuration](configuration/README.md): Demonstrates the different ways to
+- [configuration](configuration): Demonstrates the different ways to
   supply a configuration for SystemLink APIs.
