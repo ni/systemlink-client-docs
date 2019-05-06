@@ -104,9 +104,10 @@ namespace NationalInstruments.SystemLink.Clients.Examples
             Console.Error.WriteLine("\t--cloud <api_key>");
             Console.Error.WriteLine("\t--server <url> [<username> <password>]");
             Console.Error.WriteLine();
-            Console.Error.WriteLine("You can generate an API key for use with SystemLink Cloud by logging into");
-            Console.Error.WriteLine("https://www.systemlinkcloud.com. To run the example against a SystemLink Server,");
-            Console.Error.WriteLine("the URL should include the scheme, host, and port if not default. For example:");
+            Console.Error.WriteLine("Generate an API key on SystemLink Cloud. Go to https://www.systemlinkcloud.com,");
+            Console.Error.WriteLine("log in with your NI User Account, and click Security to create an API key. To");
+            Console.Error.WriteLine("run the example against a SystemLink Server, the URL should include the scheme,");
+            Console.Error.WriteLine("host, and port if not default. For example:");
             Console.Error.WriteLine("dotnet run -- --server https://myserver:9091 admin my_password");
             Environment.Exit(1);
             return null;

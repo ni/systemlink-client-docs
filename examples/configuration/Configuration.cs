@@ -41,11 +41,11 @@ namespace NationalInstruments.SystemLink.Clients.Examples.Configuration
             }
 
             /*
-             * When an automatic configuration isn't available, often during
-             * application development, the HttpConfiguration class can
+             * When an automatic configuration isn't available (often during
+             * application development) the HttpConfiguration class can
              * reference any SystemLink Server available over HTTP/HTTPS.
              *
-             * Ideally, username and password would be read from the user at
+             * Ideally, the username and password would be read from the user at
              * run time or from a file rather than checked into source.
              */
             var serverConfiguration = new HttpConfiguration(
