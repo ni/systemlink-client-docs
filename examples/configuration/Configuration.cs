@@ -52,9 +52,10 @@ namespace NationalInstruments.SystemLink.Clients.Examples.Configuration
                 new Uri("https://myserver"), "my_user", "my_password");
 
             /*
-             * To access SystemLink Cloud instead of a Server installation, log
-             * into https://www.systemlinkcloud.com and generate an API key.
-             * Then use that API key with the CloudHttpConfiguration class.
+             * To access SystemLink Cloud instead of a SystemLink Server
+             * installation, log into https://www.systemlinkcloud.com and
+             * generate an API key. Then use that API key with the
+             * CloudHttpConfiguration class.
              *
              * Ideally, the API key would be read from a file or otherwise
              * protected rather than checked into source.

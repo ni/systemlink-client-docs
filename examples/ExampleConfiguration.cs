@@ -1,6 +1,6 @@
 /*
- * This file supports other examples. See Configuration.cs for the
- * configuration example.
+ * This file supports other examples. See configuration/Configuration.cs for
+ * the configuration example.
  */
 
 using System;

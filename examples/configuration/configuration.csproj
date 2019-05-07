@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="../ExampleConfiguration.cs"/>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.2" />
     <PackageReference Include="NationalInstruments.SystemLink.Clients.Message" Version="1.0.0-CI-20190502-210240" />
     <PackageReference Include="NationalInstruments.SystemLink.Clients.Tag" Version="1.0.0-CI-20190502-210240" />
