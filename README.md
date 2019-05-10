@@ -37,7 +37,11 @@ Install-Package NationalInstruments.SystemLink.Clients.Tag
 
 ### Examples
 
-See the [examples directory](examples) to browse additional code examples.
+The below getting started example creates a [double tag](wiki/Tag) on
+[SystemLink Cloud](https://www.systemlinkcloud.com), writes two values to it,
+then reads back and outputs the current value. The tag is deleted at the end
+of the example. See the [examples directory](examples) to browse additional
+code examples.
 
 ```csharp
 using System;
@@ -75,5 +79,4 @@ namespace GettingStarted
 
 ## Documentation
 
-See the [Wiki](https://github.com/ni/systemlink-client-docs/wiki) for each
-client API's documentation.
+See the [Wiki](wiki) for each client API's documentation.
