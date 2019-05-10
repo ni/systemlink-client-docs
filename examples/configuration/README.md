@@ -33,6 +33,9 @@ Enables communication with [SystemLink Cloud](https://www.systemlinkcloud.com)
 using an API key. NI recommends you supply the API key via a secure file
 deployed with the application.
 
+See [Getting Started with SystemLink Cloud](https://www.systemlinkcloud.com/gettingstarted)
+for more information on setting up and communicating with SystemLink Cloud.
+
 ### HttpConfigurationManager
 
 When deployed on a machine with SystemLink Server installed, or on a system
@@ -44,6 +47,9 @@ Instead of using the `HttpConfigurationManager` directly, each client API has
 a default constructor or method that uses the automatic configuration for
 convenience.
 
+See [Installing and Configuring SystemLink Server and Clients](http://www.ni.com/documentation/en/systemlink/latest/setup/configuring-systemlink-server-clients/)
+for more information on installing SystemLink Server or a managed system.
+
 ### HttpConfiguration
 
 During development, it's common to run an application on a machine that neither
@@ -53,3 +59,6 @@ SystemLink Server by URL with an optional username and password.
 
 When deploying an application that uses the `HttpConfiguration` class, NI
 recommends you supply the username and password via user input.
+
+See [Configuring NI Web Server](http://www.ni.com/documentation/en/ni-web-server/latest/manual/configuring-ni-web-server/)
+for more information on configuring HTTP settings for a SystemLink Server.
