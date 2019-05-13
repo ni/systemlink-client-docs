@@ -12,8 +12,10 @@ SystemLink service or collection of related services:
 
 | Service | Package name                                   | Package
 |---------|------------------------------------------------|------------------
-| Tag     | NationalInstruments.SystemLink.Clients.Tag     | Not yet published
-| Message | NationalInstruments.SystemLink.Clients.Message | Not yet published
+| File Ingestion | NationalInstruments.SystemLink.Clients.File     | [![NuGet](https://img.shields.io/nuget/v/NationalInstruments.SystemLink.Clients.File.svg)](https://www.nuget.org/packages/NationalInstruments.SystemLink.Clients.File/)
+| Message | NationalInstruments.SystemLink.Clients.Message | [![NuGet](https://img.shields.io/nuget/v/NationalInstruments.SystemLink.Clients.Message.svg)](https://www.nuget.org/packages/NationalInstruments.SystemLink.Clients.Message/)
+| Tag     | NationalInstruments.SystemLink.Clients.Tag     | [![NuGet](https://img.shields.io/nuget/v/NationalInstruments.SystemLink.Clients.Tag.svg)](https://www.nuget.org/packages/NationalInstruments.SystemLink.Clients.Tag/)
+| Test Monitor | NationalInstruments.SystemLink.Clients.TestMonitor | [![NuGet](https://img.shields.io/nuget/v/NationalInstruments.SystemLink.Clients.TestMonitor.svg)](https://www.nuget.org/packages/NationalInstruments.SystemLink.Clients.TestMonitor/)
 
 ## Getting Started
 
