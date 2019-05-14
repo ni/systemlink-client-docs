@@ -39,7 +39,7 @@ Install-Package NationalInstruments.SystemLink.Clients.Tag
 
 ### Examples
 
-The below getting started example creates a [double tag](wiki/Tag) on
+The below getting started example creates a [double tag](https://github.com/ni/systemlink-client-docs/wiki/Tag) on
 [SystemLink Cloud](https://www.systemlinkcloud.com), writes two values to it,
 then reads back and outputs the current value. The tag is deleted at the end
 of the example. See the [examples directory](examples) to browse additional
