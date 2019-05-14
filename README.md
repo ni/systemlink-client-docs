@@ -12,10 +12,10 @@ SystemLink service or collection of related services:
 
 | Service | Package name                                   | Package
 |---------|------------------------------------------------|------------------
-| File Ingestion | [NationalInstruments.SystemLink.Clients.File](../../wiki/File) | [![NuGet](https://img.shields.io/nuget/v/NationalInstruments.SystemLink.Clients.File.svg)](https://www.nuget.org/packages/NationalInstruments.SystemLink.Clients.File/)
-| Message | [NationalInstruments.SystemLink.Clients.Message](../../wiki/Message) | [![NuGet](https://img.shields.io/nuget/v/NationalInstruments.SystemLink.Clients.Message.svg)](https://www.nuget.org/packages/NationalInstruments.SystemLink.Clients.Message/)
-| Tag     | [NationalInstruments.SystemLink.Clients.Tag](../../wiki/Tag) | [![NuGet](https://img.shields.io/nuget/v/NationalInstruments.SystemLink.Clients.Tag.svg)](https://www.nuget.org/packages/NationalInstruments.SystemLink.Clients.Tag/)
-| Test Monitor | [NationalInstruments.SystemLink.Clients.TestMonitor](../../wiki/TestMonitor) | [![NuGet](https://img.shields.io/nuget/v/NationalInstruments.SystemLink.Clients.TestMonitor.svg)](https://www.nuget.org/packages/NationalInstruments.SystemLink.Clients.TestMonitor/)
+| File Ingestion | [NationalInstruments.SystemLink.Clients.File](https://github.com/ni/systemlink-client-docs/wiki/File) | [![NuGet](https://img.shields.io/nuget/v/NationalInstruments.SystemLink.Clients.File.svg)](https://www.nuget.org/packages/NationalInstruments.SystemLink.Clients.File/)
+| Message | [NationalInstruments.SystemLink.Clients.Message](https://github.com/ni/systemlink-client-docs/wiki/Message) | [![NuGet](https://img.shields.io/nuget/v/NationalInstruments.SystemLink.Clients.Message.svg)](https://www.nuget.org/packages/NationalInstruments.SystemLink.Clients.Message/)
+| Tag     | [NationalInstruments.SystemLink.Clients.Tag](https://github.com/ni/systemlink-client-docs/wiki/Tag) | [![NuGet](https://img.shields.io/nuget/v/NationalInstruments.SystemLink.Clients.Tag.svg)](https://www.nuget.org/packages/NationalInstruments.SystemLink.Clients.Tag/)
+| Test Monitor | [NationalInstruments.SystemLink.Clients.TestMonitor](https://github.com/ni/systemlink-client-docs/wiki/TestMonitor) | [![NuGet](https://img.shields.io/nuget/v/NationalInstruments.SystemLink.Clients.TestMonitor.svg)](https://www.nuget.org/packages/NationalInstruments.SystemLink.Clients.TestMonitor/)
 
 ## Getting Started
 
@@ -81,4 +81,4 @@ namespace GettingStarted
 
 ## Documentation
 
-See the [Wiki](../../wiki) for each client API's documentation.
+See the [Wiki](https://github.com/ni/systemlink-client-docs/wiki) for each client API's documentation.
