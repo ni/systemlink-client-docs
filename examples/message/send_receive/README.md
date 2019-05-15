@@ -24,6 +24,19 @@ dotnet run -- --server <url> <username> <password>
 
 For example: `dotnet run -- --server https://my_server admin "my password"`.
 
+### Sample output
+
+```
+Opening message read session...
+Publishing messages...
+Message queue size: 138 of 1048576 bytes
+Reading back messages...
+Received message Hello World! PI=3.14159265358979
+Received message Another message, E=2.71828182845905
+Received exit message first exit
+Remaining bytes in the message queue: 11
+```
+
 About the Example
 -----------------
 
