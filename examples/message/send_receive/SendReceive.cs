@@ -22,8 +22,8 @@ namespace NationalInstruments.SystemLink.Clients.Examples.Message
 
             /*
              * Open a session and subscribe to a couple of topics. Once
-             * subscribed, the server will queue messages published to any of
-             * these topics until read.
+             * subscribed, the server will begin to queue messages published
+             * these topics. They remain queued until read by the session.
              */
             Console.WriteLine("Opening message read session...");
 
@@ -31,7 +31,6 @@ namespace NationalInstruments.SystemLink.Clients.Examples.Message
             {
                 readSession.Subscribe("example.data");
                 readSession.Subscribe("example.exit");
-                PublishMessages(configuration);
 
                 /*
                  * The read session will receive all messages for the the
@@ -41,6 +40,7 @@ namespace NationalInstruments.SystemLink.Clients.Examples.Message
                  * between the message being published and it being queued and
                  * available for reading.
                  */
+                PublishMessages(configuration);
                 Console.WriteLine("Message queue size: {0} of {1} bytes",
                    readSession.QueueSize, readSession.MaxQueueSize);
                 Console.WriteLine("Reading back messages...");
@@ -49,9 +49,9 @@ namespace NationalInstruments.SystemLink.Clients.Examples.Message
                 while (!receivedExitMessage)
                 {
                     /*
-                     * Blocks on the server until a message is available in the
-                     * queue or a brief amount of time has passed. Returns null
-                     * when there are no queued messages.
+                     * Blocks until a message is available in the queue or a
+                     * brief amount of time has passed. Returns null when there
+                     * are no queued messages.
                      */
                     var message = readSession.Read();
                     receivedExitMessage = HandleMessage(message);
