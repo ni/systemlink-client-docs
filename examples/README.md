@@ -41,3 +41,6 @@ API Examples
 
 - [Send and Receive](message/send_receive): Demonstrates how to use the
   SystemLink Message Client API to send and receive messages between sessions
+- [LabVIEW Async](message/labview): Demonstrates how to use the SystemLink Message
+  Client API to asynchronously send and receive messages as part of the
+  Async Messaging LabVIEW example.
