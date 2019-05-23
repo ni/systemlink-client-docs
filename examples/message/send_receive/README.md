@@ -2,9 +2,9 @@ Message Send and Receive Example
 ================================
 
 This is a simple example console application demonstrating how to use the
-SystemLink Message client API to send and receive messages between sessions.
+SystemLink Message Client API to send and receive messages between sessions.
 
-Additional message client examples are available in the
+Additional message Client examples are available in the
 [root message examples directory](..).
 
 Running the Example

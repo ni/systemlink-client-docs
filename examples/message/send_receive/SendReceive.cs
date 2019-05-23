@@ -7,8 +7,8 @@ namespace NationalInstruments.SystemLink.Clients.Examples.Message
 {
     /// <summary>
     /// Example for the SystemLink Message client API that opens two message
-    /// sessions, sends JSON messages from one, then reads those messages back
-    /// from the other.
+    /// sessions, sends JSON messages from one, and then reads those messages
+    /// back from the other.
     /// </summary>
     class SendReceive
     {
@@ -23,7 +23,7 @@ namespace NationalInstruments.SystemLink.Clients.Examples.Message
             /*
              * Open a session and subscribe to a couple of topics. Once
              * subscribed, the server will begin to queue messages published
-             * these topics. They remain queued until read by the session.
+             * to these topics. They remain queued until read by the session.
              */
             Console.WriteLine("Opening message read session...");
 

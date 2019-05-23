@@ -2,10 +2,10 @@ SystemLink Message Client API Examples
 ======================================
 
 This directory holds self-contained example projects for the SystemLink Message
-client API. To make finding relevant examples easier, a summary of each one is
+Client API. To make finding relevant examples easier, a summary of each one is
 listed below.
 
-Examples for other SystemLink client APIs are available in the
+Examples for other SystemLink Client APIs are available in the
 [root examples directory](..).
 
 Running an Example
@@ -32,4 +32,4 @@ Message Examples
 ----------------
 
 - [Send and Receive](send_receive): Demonstrates how to use the
-  SystemLink Message client API to send and receive messages between sessions
+  SystemLink Message Client API to send and receive messages between sessions
