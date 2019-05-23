@@ -7,8 +7,8 @@ using NationalInstruments.SystemLink.Clients.Message;
 namespace NationalInstruments.SystemLink.Clients.Examples.Message
 {
     /// <summary>
-    /// Example for the SystemLink Message client API that communicates with
-    /// Host.vi from the Async Messaging LabVIEW example.
+    /// Example for the SystemLink Message Client API that communicates with
+    /// the Host.vi from the Async Messaging LabVIEW example.
     /// </summary>
     class LabVIEW
     {

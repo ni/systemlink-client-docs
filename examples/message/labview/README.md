@@ -5,7 +5,7 @@ This is an example console application demonstrating how to use the SystemLink
 Message Client API to asynchronously send and receive messages as part of the
 Async Messaging LabVIEW example.
 
-Additional message Client examples are available in the
+Additional Message Client examples are available in the
 [root message examples directory](..).
 
 Running the Example
@@ -16,7 +16,7 @@ the LabVIEW example uses AMQP, it does not support SystemLink Cloud. For best
 results, do not run this example with the --cloud argument.
 
 1. Install the SystemLink Client from NI Package Manager to add SystemLink
-   message support to LabVIEW.
+   Message support to LabVIEW.
 2. Download and extract the [repository source](https://github.com/ni/systemlink-client-docs/archive/master.zip).
 3. Install the [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core).
 4. Navigate to the example's directory and use the [`dotnet run` command](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-run?tabs=netcore21).
