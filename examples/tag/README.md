@@ -1,9 +1,12 @@
-SystemLink Client API Examples
-==============================
+SystemLink Tag Services API Examples
+====================================
 
-This directory holds self-contained example projects for various aspects of the
-SystemLink Client APIs. To make finding relevant examples easier, a summary of
-each one is listed below.
+This directory holds self-contained example projects for the SystemLink Tag
+services API. To make finding relevant examples easier, a summary of each one is
+listed below.
+
+Examples for other SystemLink Client APIs are available in the
+[root examples directory](..).
 
 Running an Example
 ------------------
@@ -25,24 +28,8 @@ dotnet run -- --server <url> <username> <password>
 
 For example: `dotnet run -- --server https://my_server admin "my password"`.
 
-Common Examples
----------------
-
-The following examples demonstrate concepts common across all SystemLink Client
-APIs:
-
-- [configuration](configuration): Demonstrates the different ways to supply a
-  configuration for SystemLink APIs.
-
-API Examples
+Tag Examples
 ------------
 
-### [Message](message)
-
-- [Send and Receive](message/send_receive): Demonstrates how to use the
-  SystemLink Message Client API to send and receive messages between sessions.
-
-### [Tag](tag)
-
-- [Query](tag/query): Demonstrates how to use the SystemLink Tag services API to
+- [Query](query): Demonstrates how to use the SystemLink Tag services API to
   query for tags by property and output metadata about each tag.
