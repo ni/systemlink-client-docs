@@ -28,7 +28,7 @@ namespace NationalInstruments.SystemLink.Clients.Examples.Message
              * See the configuration example for how a typical application
              * might obtain a configuration.
              */
-            var configuration = ExampleConfiguration.Obtain(args);
+            var configuration = ExampleConfiguration.Obtain(args, allowCloud: false);
 
             /*
              * Open a session and subscribe to a topic. Once subscribed, the

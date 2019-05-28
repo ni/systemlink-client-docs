@@ -12,8 +12,8 @@ Running the Example
 -------------------
 
 This example is designed to run in conjunction with a LabVIEW example. Because
-the LabVIEW example uses AMQP, it does not support SystemLink Cloud. For best
-results, do not run this example with the --cloud argument.
+the LabVIEW example uses AMQP, it does not support SystemLink Cloud. As such,
+do not run this example with the --cloud argument.
 
 1. Install the SystemLink Client from NI Package Manager to add SystemLink
    Message support to LabVIEW.
@@ -25,11 +25,10 @@ results, do not run this example with the --cloud argument.
 6. Open and run `Host.vi` under My Computer to interact with the running example.
 7. When finished, stop the VI and use Control+C to stop the dotnet command.
 
-To run the example with a different configuration, use one of the following
-commands instead:
+To run the example with a different configuration, use a command like the
+following instead:
 
 ```
-dotnet run -- --cloud <api_key>
 dotnet run -- --server <url> <username> <password>
 ```
 
