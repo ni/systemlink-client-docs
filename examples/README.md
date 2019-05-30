@@ -44,3 +44,8 @@ API Examples
 - [LabVIEW Async](message/labview): Demonstrates how to use the SystemLink Message
   Client API to asynchronously send and receive messages as part of the
   Async Messaging LabVIEW example.
+
+### [Tag](tag)
+
+- [Query](tag/query): Demonstrates how to use the SystemLink Tag services API to
+  query for tags by properties to retrieve metadata for each tag.
