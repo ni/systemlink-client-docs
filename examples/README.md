@@ -40,4 +40,9 @@ API Examples
 ### [Message](message)
 
 - [Send and Receive](message/send_receive): Demonstrates how to use the
-  SystemLink Message Client API to send and receive messages between sessions
+  SystemLink Message Client API to send and receive messages between sessions.
+
+### [Tag](tag)
+
+- [Query](tag/query): Demonstrates how to use the SystemLink Tag services API to
+  query for tags by properties to retrieve metadata for each tag.
