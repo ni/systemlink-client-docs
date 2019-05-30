@@ -45,4 +45,4 @@ API Examples
 ### [Tag](tag)
 
 - [Query](tag/query): Demonstrates how to use the SystemLink Tag services API to
-  query for tags by property and output metadata about each tag.
+  query for tags by properties to retrieve metadata for each tag.

@@ -2,8 +2,8 @@ Tag Query Example
 =================
 
 This is a simple example console application demonstrating how to use the
-SystemLink Tag services API to query for tags by property and output metadata
-about each tag.
+SystemLink Tag API to query for tags by properties to retrieve metadata for
+each tag.
 
 Additional tag Client examples are available in the [root tag examples directory](..).
 
@@ -26,7 +26,7 @@ For example: `dotnet run -- --server https://my_server admin "my password"`.
 
 ### Sample output
 
-Note that tag order is not guaranteed by the query API and may differ between
+Note that tag order is not guaranteed by the Query API and may differ between
 SystemLink Cloud and SystemLink Server.
 
 ```
@@ -64,7 +64,7 @@ metadata is written to the console in a tabular format.
 
 A tag's metadata includes keywords, which are simple strings, and properties,
 which are string key-value pairs. These pieces of metadata enable storing
-information about the tag such as which node created the tag or its purpose.
+information about the tag, such as which node created the tag or its purpose.
 Applications can query for tags with certain keywords or properties with certain
 values. This example sets a property named `example` with value `query` on each
 tag that it creates, then queries for all tags with that property value.
@@ -75,7 +75,7 @@ created by the example.
 
 ### Bulk Operations
 
-The tag API enables creating tags individually via the `Open` method, or in bulk
+The Tag API enables creating tags individually via the `Open` method, or in bulk
 using the `Update` method. In general, applications should use bulk operations
 whenever possible to reduce the number of requests made to the server.
 Similarly, tag values can be read individually via the `TagValueReader` classes

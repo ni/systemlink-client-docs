@@ -115,7 +115,7 @@ namespace NationalInstruments.SystemLink.Clients.Examples.Tag
         /// Creates <see cref="NumTags"/> tags on the server of various types.
         /// Each tag will have an example keyword and property.
         /// </summary>
-        /// <param name="manager">The tag manager to use to create the tags.</param>
+        /// <param name="manager">The tag manager for creating the tags.</param>
         /// <returns>The <see cref="TagData"/> used to create the tags.</returns>
         static TagData[] CreateTags(ITagManager manager)
         {
