@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 namespace NationalInstruments.SystemLink.Clients.Examples.Message
 {
     /// <summary>
-    /// Example for the SystemLink Message client API that opens two message
+    /// Example for the SystemLink Message Client API that opens two message
     /// sessions, sends JSON messages from one, and then reads those messages
     /// back from the other.
     /// </summary>
