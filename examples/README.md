@@ -49,3 +49,5 @@ API Examples
 
 - [Query](tag/query): Demonstrates how to use the SystemLink Tag services API to
   query for tags by properties to retrieve metadata for each tag.
+- [Subscription](subscription): Demonstrates how to use the SystemLink Tag API
+  to receive notifications when tag values change.

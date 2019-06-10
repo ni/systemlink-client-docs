@@ -60,7 +60,7 @@ namespace GettingStarted
             var apiKey = args[0]; // Not a secure way to load an API key.
             var config = new CloudHttpConfiguration(apiKey);
 
-            using (var manager = new HttpTagManager(config))
+            using (var manager = new TagManager(config))
             using (var writer = manager.CreateWriter(maxBufferTime: TimeSpan.FromSeconds(1)))
             {
                 var tag = manager.Open("example.gettingstarted.double", DataType.Double);
@@ -81,4 +81,5 @@ namespace GettingStarted
 
 ## Documentation
 
-See the [Wiki](https://github.com/ni/systemlink-client-docs/wiki) for each client API's documentation.
+See the [Wiki](https://github.com/ni/systemlink-client-docs/wiki) for each
+client APIs' documentation.
