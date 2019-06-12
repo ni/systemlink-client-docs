@@ -4,7 +4,7 @@ Tag Subscription Example
 This is a simple example console application demonstrating how to use the
 SystemLink Tag API to receive notifications when tag values change.
 
-Additional tag Client examples are available in the [root tag examples directory](..).
+Additional Tag Client examples are available in the [root tag examples directory](..).
 
 Running the Example
 -------------------
@@ -54,12 +54,13 @@ Similarly, tag value writes are buffered using the `CreateWriter` method.
 
 ### Selections
 
-The Tag API enables grouping sets of tags using a selection. These selections
-group tags based on path, whether by a full path such as `example.subscription.double`
-or a wildcard path such as `example.subscription.*`. Selections are also another
-way of performing bulk operations such as reading the values or metadata for
-all tags that match the selection's paths. Finally, selections provide a means
-to create a tag subscription, which is the focus of this example.
+If you want to group sets of tags, use a selection. A selection groups tags
+based on the path(s) provided, such as an exact tag path
+(e.g. `example.subscription.double`) or with a wildcard path
+(e.g. `example.subscription.*`). Selections are also another way of performing
+bulk operations, such as reading the values or metadata for all tags that match
+the selection's paths. Finally, selections provide a means to create a tag
+subscription, which is the focus of this example.
 
 See the separate [tag selection](../selection) example for more information
 about the uses of selections.

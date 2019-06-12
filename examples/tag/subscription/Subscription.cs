@@ -32,7 +32,7 @@ namespace NationalInstruments.SystemLink.Clients.Examples.Tag
             using (var writer = manager.CreateWriter(NumTags * 2))
             {
                 /*
-                 * Create two tags, one a double and the other an int.
+                 * Create two tags. Make one a double and the other an int.
                  * Using Update enables creating both tags in a single API call.
                  */
                 var doubleTag = new TagData("example.subscription.double",
@@ -50,8 +50,8 @@ namespace NationalInstruments.SystemLink.Clients.Examples.Tag
                     try
                     {
                         /*
-                         * Subscribe to receive events when the tags' current
-                         * values change.
+                         * Subscribe to receive events when the current values
+                         * of the tags change.
                          */
                         Console.WriteLine("Subscribing to tag value changes...");
                         using (var subscription = selection.CreateSubscription())
@@ -80,7 +80,7 @@ namespace NationalInstruments.SystemLink.Clients.Examples.Tag
                             /*
                              * Subscriptions only receive the latest value when
                              * multiple writes to the same tag occur in a short
-                             * amount of time.
+                             * period of time.
                              */
                             Console.WriteLine("Writing tag values (2/2)...");
                             doubleWriter.Write(Math.E);
@@ -130,7 +130,7 @@ namespace NationalInstruments.SystemLink.Clients.Examples.Tag
                 _subscription = subscription;
 
                 /*
-                 * The TagChanged event will notify us of tag value changes.
+                 * The TagChanged event will notify us of changes in tag value.
                  */
                 subscription.TagChanged += NotifyTagChanged;
             }
