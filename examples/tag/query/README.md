@@ -5,7 +5,7 @@ This is a simple example console application demonstrating how to use the
 SystemLink Tag API to query for tags by properties to retrieve metadata for
 each tag.
 
-Additional tag Client examples are available in the [root tag examples directory](..).
+Additional Tag Client examples are available in the [root tag examples directory](..).
 
 Running the Example
 -------------------
