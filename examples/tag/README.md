@@ -33,5 +33,7 @@ Tag Examples
 
 - [Query](query): Demonstrates how to use the SystemLink Tag API to query for
   tags by properties to retrieve metadata for each tag.
+- [Selection](selection): Demonstrates how to use the SystemLink Tag API to
+  read metadata and values for multiple tags at once.
 - [Subscription](subscription): Demonstrates how to use the SystemLink Tag API
   to receive notifications when tag values change.
