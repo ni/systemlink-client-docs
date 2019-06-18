@@ -64,7 +64,7 @@ Deleting example tags...
 About the Example
 -----------------
 
-This example creates a Double tag and an Int32 tag. It then creates a selection
+This example creates a Double tag and an Int32 tag. Then, it creates a selection
 containing all tags whose path starts with `example.selection.`. Finally, the
 example demonstrates how changes made to tag values and metadata are reflected
 in the selection when refreshed.
