@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NationalInstruments.SystemLink.Clients.AssetManagement" Version="1.0.0" />
+    <PackageReference Include="NationalInstruments.SystemLink.Clients.AssetManagement" Version="1.0.0-CI-20191108-072008" />
   </ItemGroup>
 
 </Project>

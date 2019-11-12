@@ -11,13 +11,17 @@ Running the Example
 2. Install the [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core).
 3. Navigate to the example's directory and use the [`dotnet run` command](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-run?tabs=netcore21).
 
-To run the example, SystemLink Client needs to be installed. 
+
+Run the example on a machine with SystemLink Client. If the system is not managed, utilization data is stored locally on the system.
+Once the system is managed by a SystemLink Server, utilization data is synchronized.
+See [Installing and Configuring SystemLink Server and Clients](http://www.ni.com/documentation/en/systemlink/latest/setup/configuring-systemlink-server-clients/)
+for more information on installing SystemLink Server or a managed system.
 
 About the Example
 -----------------
 
 This example tracks utilization for assets present in the current system. 
-The utilization data is stored locally. Once a connection to the SystemLink Server is established,
+The utilization data is stored locally. Once the system is managed and a connection to the SystemLink Server is established,
 the utilization data is synchronized.
 
 ### Starting and Ending Asset Utilization

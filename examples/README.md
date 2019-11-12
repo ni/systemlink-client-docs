@@ -37,6 +37,14 @@ APIs:
 API Examples
 ------------
 
+### [Asset](asset)
+
+- [Utilization](asset/utilization): Demonstrates how to use the SystemLink Asset Management
+  Client API to track asset utilization.
+
+  Run the example on a machine with SystemLink Client. If the system is not managed, utilization data is stored locally on the system.
+  Once the system is managed by a SystemLink Server, utilization data is synchronized.
+
 ### [Message](message)
 
 - [Send and Receive](message/send_receive): Demonstrates how to use the
@@ -53,8 +61,3 @@ API Examples
   read metadata and values for multiple tags at once.
 - [Subscription](tag/subscription): Demonstrates how to use the SystemLink Tag API
   to receive notifications when tag values change.
-
-### [Asset](asset)
-
-- [Utilization](asset/utilization): Demonstrates how to use the SystemLink Asset Management
-  Client API to track asset utilization.
