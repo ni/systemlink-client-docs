@@ -37,6 +37,11 @@ APIs:
 API Examples
 ------------
 
+### [Asset](asset)
+
+- [Utilization](asset/utilization): Demonstrates how to use the SystemLink Asset Management
+  Client API to track asset utilization.
+
 ### [Message](message)
 
 - [Send and Receive](message/send_receive): Demonstrates how to use the
