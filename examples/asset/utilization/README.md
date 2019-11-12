@@ -17,13 +17,13 @@ About the Example
 -----------------
 
 This example tracks utilization for assets present in the current system. 
-The utilizations are stored localy and once a connection to the SystemLink Server is established,
+The utilization data is stored locally. Once a connection to the SystemLink Server is established,
 the utilization data is synchronized.
 
 ### Starting and Ending Asset Utilization
 
 To start tracking asset utilization, the `StartUtilization` method on the `AssetUtilizationStore` needs to be called.
-It returns an `IStartedUtilization` which represents a started utilization session. 
+It returns an `IStartedUtilization`, which represents a started utilization session. 
 To end an ongoing asset utilization, the `IStartedUtilization` needs to be disposed.
 
 ### Heartbeats
