@@ -41,6 +41,7 @@ namespace NationalInstruments.SystemLink.Clients.Examples.TestMonitor
             };
             // Create the test result on the SystemLink server
             var testResult = testDataManager.CreateResult(resultData);
+            // Automatically sync the result's runtime with its test steps
             testResult.AutoUpdateTotalTime = true;
 
             /*
