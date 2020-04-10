@@ -61,7 +61,7 @@ namespace NationalInstruments.SystemLink.Clients.Examples.TestMonitor
 
                     // Testing the power measurement
                     var status = (power < lowLimit || power > highLimit) ? new Status(StatusType.Failed) : new Status(StatusType.Passed);
-                    var test_parameters = BuildPowerMeasurementParams(power, lowLimit, highLimit, status);
+                    var testParameters = BuildPowerMeasurementParams(power, lowLimit, highLimit, status);
 
                     // Generate a child step to represent the power output measurement
                     var voltageStepData = GenerateStepData($"Measure Power Output", "NumericLimit", inputs, outputs, test_parameters, status);
