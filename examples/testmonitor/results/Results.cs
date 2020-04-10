@@ -100,7 +100,7 @@ namespace NationalInstruments.SystemLink.Clients.Examples.TestMonitor
             // Initialize a ResultData object
             var resultData = new ResultData()
             {
-                Operator = "mvaterla",
+                Operator = "John Smith",
                 ProgramName = "Power Test",
                 Status = new Status(StatusType.Running),
                 SerialNumber = Guid.NewGuid().ToString(),
