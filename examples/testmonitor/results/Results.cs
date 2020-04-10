@@ -69,7 +69,7 @@ namespace NationalInstruments.SystemLink.Clients.Examples.TestMonitor
                     var voltageStep = currentStep.CreateStep(voltageStepData);
 
                     // If a test in the sweep fails, the entire sweep failed.  Mark the parent step accordingly
-                    if (voltageStep.Data.Status.StatusType.Equals(StatusType.Failed))
+                    if (status.StatusType.Equals(StatusType.Failed))
                     {
                         currentStepData.Status = new Status(StatusType.Failed);
                         // Update the parent test step's status on the SystemLink server
