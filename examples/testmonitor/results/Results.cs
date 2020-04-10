@@ -138,7 +138,7 @@ namespace NationalInstruments.SystemLink.Clients.Examples.TestMonitor
             parameter.Add("nominalValue", null);
             parameter.Add("lowLimit", $"{lowLimit}");
             parameter.Add("highLimit", $"{highLimit}");
-            parameter.Add("comparisonType", "GELT");
+            parameter.Add("comparisonType", "GELE");
 
             var parameters = new List<Dictionary<String, String>>() { parameter };
             return parameters;
