@@ -10,73 +10,6 @@ namespace NationalInstruments.SystemLink.Clients.Examples.TestMonitor
     /// </summary>
     class Results
     {
-        /// <summary>
-        /// Creates a <see cref="StepData"/> object and
-        /// populates it to match the TestStand data model.
-        /// </summary>
-        /// <param name="name">The test step's name.</param>
-        /// <param name="stepType">The test step's type.</param>
-        /// <param name="current">The value of the measured electrical current.</param>
-        /// <param name="voltage">The value of the measured electrical voltage.</param>
-        /// <param name="power">The value of calculated electrical power.</param>
-        /// <param name="lowLimit">The value of the low test limit.</param>
-        /// <param name="highLimit">The value of the high test limit.</param>
-        /// <returns>The <see cref="StepData"/> used to create a test step.</returns>
-        private static StepData GenerateStepData(string name, string stepType, double current, double voltage, double power, double lowLimit, double highLimit)
-        {
-            Random random = new Random();
-            var status = new Status(StatusType.Running);
-            var inputs = new List<NamedValue>();
-
-            var outputs = new List<NamedValue>();
-
-            var parameters = new List<Dictionary<string, string>>();
-            if (stepType.Equals("NumericLimit"))
-            {
-                // Add parameters to match the TestStand data model
-                var parameter = new Dictionary<string, string>();
-                parameter.Add("name", "Power Test");
-                parameter.Add("status", "status");
-                parameter.Add("measurement", $"{power}");
-                parameter.Add("units", null);
-                parameter.Add("nominalValue", null);
-                parameter.Add("lowLimit", $"{lowLimit}");
-                parameter.Add("highLimit", $"{highLimit}");
-                parameter.Add("comparisonType", "GELT");
-                parameters.Add(parameter);
-
-                // Record electrical current and voltage as inputs
-                inputs = new List<NamedValue>()
-                {
-                    new NamedValue("current", current),
-                    new NamedValue("voltage", voltage)
-                };
-
-                // Record electrical power as an output
-                outputs = new List<NamedValue>()
-                {
-                    new NamedValue("power", power)
-                };
-
-                // Set the step's status based on if the electrical power is within the test limits
-                status = (power < lowLimit || power > highLimit) ? new Status(StatusType.Failed) : new Status(StatusType.Passed);
-            }
-
-            var stepData = new StepData()
-            {
-                Inputs = inputs,
-                Name = name,
-                Outputs = outputs,
-                StepType = stepType,
-                Status = status,
-                TotalTimeInSeconds = random.NextDouble() * 10,
-                Parameters = parameters,
-                DataModel = "TestStand",
-            };
-
-            return stepData;
-        }
-
         static void Main(string[] args)
         {
             /*
@@ -91,7 +24,7 @@ namespace NationalInstruments.SystemLink.Clients.Examples.TestMonitor
             var testDataManager = new TestDataManager(configuration);
 
             // Intialize the random number generator
-            Random random = new Random();
+            var random = new Random();
 
             // Set test limits
             var lowLimit = 0;
@@ -104,8 +37,7 @@ namespace NationalInstruments.SystemLink.Clients.Examples.TestMonitor
                 ProgramName = "Power Test",
                 Status = new Status(StatusType.Running),
                 SerialNumber = Guid.NewGuid().ToString(),
-                PartNumber = "NI-ABC-123-PWR",
-                FileIds = new List<string> { }
+                PartNumber = "NI-ABC-123-PWR"
             };
             // Create the test result on the SystemLink server
             var testResult = testDataManager.CreateResult(resultData);
@@ -114,33 +46,29 @@ namespace NationalInstruments.SystemLink.Clients.Examples.TestMonitor
             /*
             * Simulate a sweep across a range of electrical current and voltage.
             * For each value, calculate the electrical power (P=IV).
-            * Simulate some random current and voltage loss after each test to
-            * provide some randomness the the values.
             */
-            var current = 0;
-            var voltage = 0;
-            var currentLoss = 1 - random.NextDouble();
-            var voltageLoss = 1 - random.NextDouble();
-            var power = current * currentLoss * voltage * voltageLoss;
-            for (current = 0; current < 10; current++)
+            for (var current = 0; current < 10; current++)
             {
-                currentLoss = 1 - random.NextDouble() * 0.25;
-                power = current * currentLoss * voltage * voltageLoss;
-                // Generate the step data
-                var currentStepData = GenerateStepData($"Current Sweep", "SequenceCall", current, voltage, power, lowLimit, highLimit);
+                // Generate a parent step to represent a sweep of voltages at a given current
+                var currentStepData = GenerateStepData($"Voltage Sweep", "SequenceCall", null, null, null);
                 // Create the step on the SystemLink server
                 var currentStep = testResult.CreateStep(currentStepData);
 
-                for (voltage = 0; voltage < 10; voltage++)
+                for (var voltage = 0; voltage < 10; voltage++)
                 {
-                    voltageLoss = 1 - random.NextDouble() * 0.25;
-                    power = current * currentLoss * voltage * voltageLoss;
-                    // Generate the step data
-                    var voltageStepData = GenerateStepData($"Voltage Sweep", "NumericLimit", current, voltage, power, lowLimit, highLimit);
+                    // Simulate obtaining a power measurement
+                    var (power, inputs, outputs) = MeasurePower(current, voltage);
+
+                    // Testing the power measurement
+                    var status = (power < lowLimit || power > highLimit) ? new Status(StatusType.Failed) : new Status(StatusType.Passed);
+                    var test_parameters = BuildPowerMeasurementParams(power, lowLimit, highLimit, status);
+
+                    // Generate a child step to represent the power output measurement
+                    var voltageStepData = GenerateStepData($"Measure Power Output", "NumericLimit", inputs, outputs, test_parameters);
                     // Create the step on the SystemLink server
                     var voltageStep = currentStep.CreateStep(voltageStepData);
 
-                    // Set the parent test step's status if the child test step failed
+                    // If a test in the sweep fails, the entire sweep failed.  Mark the parent step accordingly
                     if (voltageStep.Data.Status.StatusType.Equals(StatusType.Failed))
                     {
                         currentStepData.Status = new Status(StatusType.Failed);
@@ -160,6 +88,90 @@ namespace NationalInstruments.SystemLink.Clients.Examples.TestMonitor
 
             // Update the top-level test result's status based on the most severe child step's status
             testResult = testResult.DetermineStatusFromSteps();
+        }
+
+        /// <summary>
+        /// Simulates taking an electrical power measurement.
+        /// This introduces some random current and voltage loss.
+        /// </summary>
+        /// <param name="current">The electrical current value.</param>
+        /// <param name="voltage">The electrical voltage value.</param>
+        /// <returns>The a tuple containing the electrical power measurements and the input and output lists.</returns>
+        private static (double power, List<NamedValue> inputs, List<NamedValue> outputs) MeasurePower(int current, int voltage = 0)
+        {
+            var random = new Random();
+            var currentLoss = 1 - random.NextDouble() * 0.25;
+            var voltageLoss = 1 - random.NextDouble() * 0.25;
+            var power = current * currentLoss * voltage * voltageLoss;
+
+            // Record electrical current and voltage as inputs
+            var inputs = new List<NamedValue>()
+            {
+                new NamedValue("current", current),
+                new NamedValue("voltage", voltage)
+            };
+
+            // Record electrical power as an output
+            var outputs = new List<NamedValue>()
+            {
+                new NamedValue("power", power)
+            };
+
+            return (power, inputs, outputs);
+        }
+
+        /// <summary>
+        /// Builds a Test Monitor measurement parameter object for the power test.
+        /// </summary>
+        /// <param name="power">The electrical power measurement.</param>
+        /// <param name="lowLimit">The value of the low limit for the test.</param>
+        /// <param name="highLimit">The value of the high limit for the test.</param>
+        /// <param name="status">The measurement's pass/fail status.</param>
+        /// <returns>A list of test measurement parameters.</returns>
+        private static List<Dictionary<string, string>> BuildPowerMeasurementParams(double power, double lowLimit, double highLimit, Status status)
+        {
+            var parameter = new Dictionary<string, string>();
+            parameter.Add("name", $"Power Test");
+            parameter.Add("status", status.StatusType.ToString());
+            parameter.Add("measurement", $"{power}");
+            parameter.Add("units", "Watts");
+            parameter.Add("nominalValue", null);
+            parameter.Add("lowLimit", $"{lowLimit}");
+            parameter.Add("highLimit", $"{highLimit}");
+            parameter.Add("comparisonType", "GELT");
+
+            var parameters = new List<Dictionary<String, String>>() { parameter };
+            return parameters;
+        }
+
+        /// <summary>
+        /// Creates a <see cref="StepData"/> object and
+        /// populates it to match the TestStand data model.
+        /// </summary>
+        /// <param name="name">The test step's name.</param>
+        /// <param name="stepType">The test step's type.</param>
+        /// <param name="inputs">The test step's input values.</param>
+        /// <param name="outputs">The test step's output values.</param>
+        /// <param name="parameters">The measurement parameters.</param>
+        /// <returns>The <see cref="StepData"/> used to create a test step.</returns>
+        private static StepData GenerateStepData(string name, string stepType, List<NamedValue> inputs, List<NamedValue> outputs, List<Dictionary<String, String>> parameters)
+        {
+            var random = new Random();
+            var status = new Status(StatusType.Running);
+
+            var stepData = new StepData()
+            {
+                Name = name,
+                Inputs = inputs,
+                Outputs = outputs,
+                StepType = stepType,
+                Status = status,
+                TotalTimeInSeconds = random.NextDouble() * 10,
+                Parameters = parameters,
+                DataModel = "TestStand",
+            };
+
+            return stepData;
         }
     }
 }
