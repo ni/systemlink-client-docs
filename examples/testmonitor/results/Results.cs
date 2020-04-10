@@ -50,7 +50,7 @@ namespace NationalInstruments.SystemLink.Clients.Examples.TestMonitor
             for (var current = 0; current < 10; current++)
             {
                 // Generate a parent step to represent a sweep of voltages at a given current
-                var currentStepData = GenerateStepData($"Voltage Sweep", "SequenceCall", null, null, null);
+                var currentStepData = GenerateStepData($"Voltage Sweep", "SequenceCall", null, null, null, new Status(StatusType.Running));
                 // Create the step on the SystemLink server
                 var currentStep = testResult.CreateStep(currentStepData);
 
@@ -64,7 +64,7 @@ namespace NationalInstruments.SystemLink.Clients.Examples.TestMonitor
                     var test_parameters = BuildPowerMeasurementParams(power, lowLimit, highLimit, status);
 
                     // Generate a child step to represent the power output measurement
-                    var voltageStepData = GenerateStepData($"Measure Power Output", "NumericLimit", inputs, outputs, test_parameters);
+                    var voltageStepData = GenerateStepData($"Measure Power Output", "NumericLimit", inputs, outputs, test_parameters, status);
                     // Create the step on the SystemLink server
                     var voltageStep = currentStep.CreateStep(voltageStepData);
 
@@ -77,7 +77,7 @@ namespace NationalInstruments.SystemLink.Clients.Examples.TestMonitor
                     }
                 }
 
-                // If none of the child steps failed, mark the step as passed.
+                // If none of the child steps failed, mark the step as passed
                 if (currentStepData.Status.StatusType.Equals(StatusType.Running))
                 {
                     currentStepData.Status = new Status(StatusType.Passed);
@@ -154,10 +154,10 @@ namespace NationalInstruments.SystemLink.Clients.Examples.TestMonitor
         /// <param name="outputs">The test step's output values.</param>
         /// <param name="parameters">The measurement parameters.</param>
         /// <returns>The <see cref="StepData"/> used to create a test step.</returns>
-        private static StepData GenerateStepData(string name, string stepType, List<NamedValue> inputs, List<NamedValue> outputs, List<Dictionary<String, String>> parameters)
+        private static StepData GenerateStepData(string name, string stepType, List<NamedValue> inputs, List<NamedValue> outputs, List<Dictionary<String, String>> parameters, Status status)
         {
             var random = new Random();
-            var status = new Status(StatusType.Running);
+            var stepStatus = status ?? new Status(StatusType.Running);
 
             var stepData = new StepData()
             {
@@ -165,7 +165,7 @@ namespace NationalInstruments.SystemLink.Clients.Examples.TestMonitor
                 Inputs = inputs,
                 Outputs = outputs,
                 StepType = stepType,
-                Status = status,
+                Status = stepStatus,
                 TotalTimeInSeconds = random.NextDouble() * 10,
                 Parameters = parameters,
                 DataModel = "TestStand",
