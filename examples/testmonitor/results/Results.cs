@@ -51,9 +51,9 @@ namespace NationalInstruments.SystemLink.Clients.Examples.TestMonitor
             for (var current = 0; current < 10; current++)
             {
                 // Generate a parent step to represent a sweep of voltages at a given current
-                var currentStepData = GenerateStepData($"Voltage Sweep", "SequenceCall", null, null, null, new Status(StatusType.Running));
+                var voltageSweepStepData = GenerateStepData($"Voltage Sweep", "SequenceCall", null, null, null, new Status(StatusType.Running));
                 // Create the step on the SystemLink server
-                var currentStep = testResult.CreateStep(currentStepData);
+                var voltageSweepStep = testResult.CreateStep(voltageSweepStepData);
 
                 for (var voltage = 0; voltage < 10; voltage++)
                 {
@@ -65,25 +65,25 @@ namespace NationalInstruments.SystemLink.Clients.Examples.TestMonitor
                     var testParameters = BuildPowerMeasurementParams(power, lowLimit, highLimit, status);
 
                     // Generate a child step to represent the power output measurement
-                    var voltageStepData = GenerateStepData($"Measure Power Output", "NumericLimit", inputs, outputs, test_parameters, status);
+                    var measurePowerOutputStepData = GenerateStepData($"Measure Power Output", "NumericLimit", inputs, outputs, testParameters, status);
                     // Create the step on the SystemLink server
-                    var voltageStep = currentStep.CreateStep(voltageStepData);
+                    var measurePowerOutputStep = voltageSweepStep.CreateStep(measurePowerOutputStepData);
 
                     // If a test in the sweep fails, the entire sweep failed.  Mark the parent step accordingly
                     if (status.StatusType.Equals(StatusType.Failed))
                     {
-                        currentStepData.Status = new Status(StatusType.Failed);
+                        voltageSweepStepData.Status = new Status(StatusType.Failed);
                         // Update the parent test step's status on the SystemLink server
-                        currentStep.Update(currentStepData);
+                        voltageSweepStep.Update(voltageSweepStepData);
                     }
                 }
 
                 // If none of the child steps failed, mark the step as passed
-                if (currentStepData.Status.StatusType.Equals(StatusType.Running))
+                if (voltageSweepStepData.Status.StatusType.Equals(StatusType.Running))
                 {
-                    currentStepData.Status = new Status(StatusType.Passed);
+                    voltageSweepStepData.Status = new Status(StatusType.Passed);
                     // Update the test step's status on the SystemLink server
-                    currentStep.Update(currentStepData);
+                    voltageSweepStep.Update(voltageSweepStepData);
                 }
             }
 
@@ -131,15 +131,17 @@ namespace NationalInstruments.SystemLink.Clients.Examples.TestMonitor
         /// <returns>A list of test measurement parameters.</returns>
         private static List<Dictionary<string, string>> BuildPowerMeasurementParams(double power, double lowLimit, double highLimit, Status status)
         {
-            var parameter = new Dictionary<string, string>();
-            parameter.Add("name", $"Power Test");
-            parameter.Add("status", status.StatusType.ToString());
-            parameter.Add("measurement", $"{power}");
-            parameter.Add("units", "Watts");
-            parameter.Add("nominalValue", null);
-            parameter.Add("lowLimit", $"{lowLimit}");
-            parameter.Add("highLimit", $"{highLimit}");
-            parameter.Add("comparisonType", "GELE");
+            var parameter = new Dictionary<string, string>()
+            {
+                ["name"] = $"Power Test",
+                ["status"] = status.StatusType.ToString(),
+                ["measurement"] = $"{power}",
+                ["units"] = "Watts",
+                ["nominalValue"] = null,
+                ["lowLimit"] = $"{lowLimit}",
+                ["highLimit"] = $"{highLimit}",
+                ["comparisonType"] = "GELE"
+            };
 
             var parameters = new List<Dictionary<String, String>>() { parameter };
             return parameters;
