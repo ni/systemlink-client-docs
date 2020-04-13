@@ -45,7 +45,7 @@ namespace NationalInstruments.SystemLink.Clients.Examples.TestMonitor
             // Automatically sync the result's runtime with its test steps.
             testResult.AutoUpdateTotalTime = true;
 
-            /*
+           /*
             * Simulate a sweep across a range of electrical current and voltage.
             * For each value, calculate the electrical power (P=IV).
             */
