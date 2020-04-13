@@ -61,7 +61,7 @@ namespace NationalInstruments.SystemLink.Clients.Examples.TestMonitor
                     // Simulate obtaining a power measurement.
                     var (power, inputs, outputs) = MeasurePower(current, voltage);
 
-                    // Testing the power measurement.
+                    // Test the power measurement.
                     var status = (power < lowLimit || power > highLimit) ? new Status(StatusType.Failed) : new Status(StatusType.Passed);
                     var testParameters = BuildPowerMeasurementParams(power, lowLimit, highLimit, status);
 
