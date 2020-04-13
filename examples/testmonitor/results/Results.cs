@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using NationalInstruments.SystemLink.Clients.TestMonitor;
 
 namespace NationalInstruments.SystemLink.Clients.Examples.TestMonitor
@@ -23,14 +24,14 @@ namespace NationalInstruments.SystemLink.Clients.Examples.TestMonitor
              */
             var testDataManager = new TestDataManager(configuration);
 
-            // Intialize the random number generator
+            // Intialize the random number generator.
             var random = new Random();
 
             // Set test limits
             var lowLimit = 0;
             var highLimit = 70;
 
-            // Initialize a ResultData object
+            // Initialize a ResultData object.
             var resultData = new ResultData()
             {
                 Operator = "John Smith",
@@ -39,9 +40,9 @@ namespace NationalInstruments.SystemLink.Clients.Examples.TestMonitor
                 SerialNumber = Guid.NewGuid().ToString(),
                 PartNumber = "NI-ABC-123-PWR"
             };
-            // Create the test result on the SystemLink server
+            // Create the test result on the SystemLink server.
             var testResult = testDataManager.CreateResult(resultData);
-            // Automatically sync the result's runtime with its test steps
+            // Automatically sync the result's runtime with its test steps.
             testResult.AutoUpdateTotalTime = true;
 
             /*
@@ -50,44 +51,44 @@ namespace NationalInstruments.SystemLink.Clients.Examples.TestMonitor
             */
             for (var current = 0; current < 10; current++)
             {
-                // Generate a parent step to represent a sweep of voltages at a given current
-                var voltageSweepStepData = GenerateStepData($"Voltage Sweep", "SequenceCall", null, null, null, new Status(StatusType.Running));
-                // Create the step on the SystemLink server
+                // Generate a parent step to represent a sweep of voltages at a given current.
+                var voltageSweepStepData = GenerateStepData("Voltage Sweep", "SequenceCall");
+                // Create the step on the SystemLink server.
                 var voltageSweepStep = testResult.CreateStep(voltageSweepStepData);
 
                 for (var voltage = 0; voltage < 10; voltage++)
                 {
-                    // Simulate obtaining a power measurement
+                    // Simulate obtaining a power measurement.
                     var (power, inputs, outputs) = MeasurePower(current, voltage);
 
-                    // Testing the power measurement
+                    // Testing the power measurement.
                     var status = (power < lowLimit || power > highLimit) ? new Status(StatusType.Failed) : new Status(StatusType.Passed);
                     var testParameters = BuildPowerMeasurementParams(power, lowLimit, highLimit, status);
 
-                    // Generate a child step to represent the power output measurement
-                    var measurePowerOutputStepData = GenerateStepData($"Measure Power Output", "NumericLimit", inputs, outputs, testParameters, status);
-                    // Create the step on the SystemLink server
+                    // Generate a child step to represent the power output measurement.
+                    var measurePowerOutputStepData = GenerateStepData("Measure Power Output", "NumericLimit", inputs, outputs, testParameters, status);
+                    // Create the step on the SystemLink server.
                     var measurePowerOutputStep = voltageSweepStep.CreateStep(measurePowerOutputStepData);
 
-                    // If a test in the sweep fails, the entire sweep failed.  Mark the parent step accordingly
+                    // If a test in the sweep fails, the entire sweep failed.  Mark the parent step accordingly.
                     if (status.StatusType.Equals(StatusType.Failed))
                     {
                         voltageSweepStepData.Status = new Status(StatusType.Failed);
-                        // Update the parent test step's status on the SystemLink server
+                        // Update the parent test step's status on the SystemLink server.
                         voltageSweepStep.Update(voltageSweepStepData);
                     }
                 }
 
-                // If none of the child steps failed, mark the step as passed
+                // If none of the child steps failed, mark the step as passed.
                 if (voltageSweepStepData.Status.StatusType.Equals(StatusType.Running))
                 {
                     voltageSweepStepData.Status = new Status(StatusType.Passed);
-                    // Update the test step's status on the SystemLink server
+                    // Update the test step's status on the SystemLink server.
                     voltageSweepStep.Update(voltageSweepStepData);
                 }
             }
 
-            // Update the top-level test result's status based on the most severe child step's status
+            // Update the top-level test result's status based on the most severe child step's status.
             testResult = testResult.DetermineStatusFromSteps();
         }
 
@@ -105,14 +106,14 @@ namespace NationalInstruments.SystemLink.Clients.Examples.TestMonitor
             var voltageLoss = 1 - random.NextDouble() * 0.25;
             var power = current * currentLoss * voltage * voltageLoss;
 
-            // Record electrical current and voltage as inputs
+            // Record electrical current and voltage as inputs.
             var inputs = new List<NamedValue>()
             {
                 new NamedValue("current", current),
                 new NamedValue("voltage", voltage)
             };
 
-            // Record electrical power as an output
+            // Record electrical power as an output.
             var outputs = new List<NamedValue>()
             {
                 new NamedValue("power", power)
@@ -133,13 +134,13 @@ namespace NationalInstruments.SystemLink.Clients.Examples.TestMonitor
         {
             var parameter = new Dictionary<string, string>()
             {
-                ["name"] = $"Power Test",
+                ["name"] = "Power Test",
                 ["status"] = status.StatusType.ToString(),
-                ["measurement"] = $"{power}",
+                ["measurement"] = power.ToString(CultureInfo.InvariantCulture),
                 ["units"] = "Watts",
                 ["nominalValue"] = null,
-                ["lowLimit"] = $"{lowLimit}",
-                ["highLimit"] = $"{highLimit}",
+                ["lowLimit"] = lowLimit.ToString(CultureInfo.InvariantCulture),
+                ["highLimit"] = highLimit.ToString(CultureInfo.InvariantCulture),
                 ["comparisonType"] = "GELE"
             };
 
@@ -157,7 +158,13 @@ namespace NationalInstruments.SystemLink.Clients.Examples.TestMonitor
         /// <param name="outputs">The test step's output values.</param>
         /// <param name="parameters">The measurement parameters.</param>
         /// <returns>The <see cref="StepData"/> used to create a test step.</returns>
-        private static StepData GenerateStepData(string name, string stepType, List<NamedValue> inputs, List<NamedValue> outputs, List<Dictionary<String, String>> parameters, Status status)
+        private static StepData GenerateStepData(
+            string name,
+            string stepType,
+            List<NamedValue> inputs = null,
+            List<NamedValue> outputs = null,
+            List<Dictionary<String, String>> parameters = null,
+            Status status = null)
         {
             var random = new Random();
             var stepStatus = status ?? new Status(StatusType.Running);

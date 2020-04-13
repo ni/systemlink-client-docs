@@ -11,11 +11,9 @@ Running the Example
 2. Install the [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core).
 3. Navigate to the example's directory and use the [`dotnet run` command](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-run?tabs=netcore21).
 
-To run the example with a different configuration, use one of the following
-commands instead:
+To run the example, use the following command:
 
 ```
-dotnet run -- --cloud <api_key>
 dotnet run -- --server <url> <username> <password>
 ```
 
@@ -34,10 +32,8 @@ The example also shows how to use some additional features of the API to automat
 
 ### Sample output
 
-The data published to the SystemLink server can be viewed in the [Test Monitor Web Application](https://localhost/#testmonitor).
-
-The test result and associated steps can be viewed in the SystemLink Test Monitor web application:
-![Test result and steps in the SystemLink Test Monitor web application](./TestMonitor.png "Test result and steps in the SystemLink Test Monitor web application")
+The data published to the SystemLink server can be viewed in the [Test Monitor Web Application](https://localhost/#testmonitor).  The test result details and the assocaited steps can be explored using a web browser:
+![Test result and steps](./TestMonitor.png "Test result and steps")
 
 The test step measurements can be analyzed in the SystemLink Test Monitor parametric data view:
 ![Measurements in the SystemLink Test Monitor web application parametric data view](./ParametricData.png "Measurements in the SystemLink Test Monitor web application parametric data view")
