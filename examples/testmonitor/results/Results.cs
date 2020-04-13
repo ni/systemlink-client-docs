@@ -66,12 +66,17 @@ namespace NationalInstruments.SystemLink.Clients.Examples.TestMonitor
                     var testParameters = BuildPowerMeasurementParams(power, lowLimit, highLimit, status);
 
                     // Generate a child step to represent the power output measurement.
-                    var measurePowerOutputStepData = GenerateStepData("Measure Power Output", "NumericLimit", inputs, outputs, testParameters, status);
+                    var measurePowerOutputStepData = GenerateStepData(
+                        "Measure Power Output",
+                        "NumericLimit",
+                        inputs, outputs,
+                        testParameters,
+                        status);
                     // Create the step on the SystemLink server.
                     var measurePowerOutputStep = voltageSweepStep.CreateStep(measurePowerOutputStepData);
 
                     // If a test in the sweep fails, the entire sweep failed.  Mark the parent step accordingly.
-                    if (status.StatusType.Equals(StatusType.Failed))
+                    if (status.StatusType == StatusType.Failed)
                     {
                         voltageSweepStepData.Status = new Status(StatusType.Failed);
                         // Update the parent test step's status on the SystemLink server.
@@ -80,7 +85,7 @@ namespace NationalInstruments.SystemLink.Clients.Examples.TestMonitor
                 }
 
                 // If none of the child steps failed, mark the step as passed.
-                if (voltageSweepStepData.Status.StatusType.Equals(StatusType.Running))
+                if (voltageSweepStepData.Status.StatusType == StatusType.Running)
                 {
                     voltageSweepStepData.Status = new Status(StatusType.Passed);
                     // Update the test step's status on the SystemLink server.
@@ -130,7 +135,11 @@ namespace NationalInstruments.SystemLink.Clients.Examples.TestMonitor
         /// <param name="highLimit">The value of the high limit for the test.</param>
         /// <param name="status">The measurement's pass/fail status.</param>
         /// <returns>A list of test measurement parameters.</returns>
-        private static List<Dictionary<string, string>> BuildPowerMeasurementParams(double power, double lowLimit, double highLimit, Status status)
+        private static List<Dictionary<string, string>> BuildPowerMeasurementParams(
+            double power,
+            double lowLimit,
+            double highLimit,
+            Status status)
         {
             var parameter = new Dictionary<string, string>()
             {
