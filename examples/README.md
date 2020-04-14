@@ -42,6 +42,10 @@ API Examples
 - [Utilization](asset/utilization): Demonstrates how to use the SystemLink Asset Management
   Client API to track asset utilization.
 
+### [File](file)
+
+- [Stream](file/stream): Demonstrates how to use the SystemLink File API to upload files using an in-memory stream.
+
 ### [Message](message)
 
 - [Send and Receive](message/send_receive): Demonstrates how to use the
