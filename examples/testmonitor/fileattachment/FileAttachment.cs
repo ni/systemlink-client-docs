@@ -8,8 +8,9 @@ using NationalInstruments.SystemLink.Clients.File;
 namespace NationalInstruments.SystemLink.Clients.Examples.TestMonitor
 {
     /// <summary>
-    /// Example for the SystemLink Test Monitor API that creates a test result
-    /// and associated steps simulating a current and voltage sweep.
+    /// Example for the SystemLink Test Monitor API that creates a test result,
+    /// uploads a file to the SystemLink server and attaches the file to the
+    /// test result.
     /// </summary>
     class FileAttachment
     {
