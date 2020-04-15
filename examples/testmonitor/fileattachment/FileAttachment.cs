@@ -82,7 +82,7 @@ namespace NationalInstruments.SystemLink.Clients.Examples.TestMonitor
                 // Reset the stream position to the beginning to upload from the beginning.
                 memoryStream.Position = 0;
 
-                // Upload the file to the SystemLink server and get the uploaded file's Id.
+                // Upload the file to the SystemLink server and get the ID for the uploaded file.
                 var fileId = fileUploader.UploadFile(memoryStream, fileName);
                 return fileId;
             }
