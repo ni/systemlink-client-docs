@@ -68,7 +68,7 @@ namespace NationalInstruments.SystemLink.Clients.Examples.TestMonitor
         /// <param name="fileName">The name for the uploaded file.</param>
         /// <param name="fileContents">An array of bytes to send for the contents of the file.</param>
         /// <returns>The ID of the file that was uploaded.</returns>
-        public static string UploadFileUsingStream(Core.IHttpConfiguration configuration, string fileName, byte[] fileContents)
+        public static string UploadFileData(IHttpConfiguration configuration, string fileName, byte[] fileContents)
         {
             // Upload a file using the SystemLink File client
             var fileUploader = new FileUploader(configuration);
