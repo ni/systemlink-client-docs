@@ -27,15 +27,9 @@ namespace NationalInstruments.SystemLink.Clients.Examples.File
             var fileContents = Encoding.UTF8.GetBytes("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 
             // Use in-memory data for the file upload.
-            using (var memoryStream = new MemoryStream())
+            using (var memoryStream = new MemoryStream(fileContents))
             {
-                // Write the file content as bytes to the stream.
-                memoryStream.Write(fileContents, 0, fileContents.Length);
-
-                // Reset the stream position to the beginning to upload from the beginning.
-                memoryStream.Position = 0;
-
-                // Upload the file to the SystemLink server and get the uploaded file's Id.
+                // Upload the file to the SystemLink server and get the ID of the uploaded file.
                 var fileId = fileUploader.UploadFile(memoryStream, fileName);
             }
         }
