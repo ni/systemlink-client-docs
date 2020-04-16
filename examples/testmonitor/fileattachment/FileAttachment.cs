@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using NationalInstruments.SystemLink.Clients.Core;
 using NationalInstruments.SystemLink.Clients.File;
 using NationalInstruments.SystemLink.Clients.TestMonitor;
 
@@ -41,7 +42,7 @@ namespace NationalInstruments.SystemLink.Clients.Examples.TestMonitor
             var testResult = testDataManager.CreateResult(resultData);
 
             // Upload some sample data as the file contents.
-            var fileId = UploadFileUsingStream(
+            var fileId = UploadFileData(
                 configuration,
                 "stream.txt",
                 Encoding.UTF8.GetBytes("ABCDEFGHIJKLMNOPQRSTUVWXYZ"));
@@ -71,14 +72,8 @@ namespace NationalInstruments.SystemLink.Clients.Examples.TestMonitor
             var fileUploader = new FileUploader(configuration);
 
             // Use in-memory data for the file upload.
-            using (var memoryStream = new MemoryStream())
+            using (var memoryStream = new MemoryStream(fileContents))
             {
-                // Write the file content as bytes to the stream.
-                memoryStream.Write(fileContents, 0, fileContents.Length);
-
-                // Reset the stream position to the beginning to upload from the beginning.
-                memoryStream.Position = 0;
-
                 // Upload the file to the SystemLink server and get the ID for the uploaded file.
                 var fileId = fileUploader.UploadFile(memoryStream, fileName);
                 return fileId;
