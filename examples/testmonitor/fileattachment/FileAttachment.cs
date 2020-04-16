@@ -20,7 +20,7 @@ namespace NationalInstruments.SystemLink.Clients.Examples.TestMonitor
              * See the configuration example for how a typical application
              * might obtain a configuration.
              */
-            var configuration = ExampleConfiguration.Obtain(args);
+            var configuration = ExampleConfiguration.Obtain(args, allowCloud: false);
 
             /*
              * Create the TestDataManager for communicating with the server.
