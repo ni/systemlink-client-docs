@@ -27,9 +27,6 @@ namespace NationalInstruments.SystemLink.Clients.Examples.TestMonitor
              */
             var testDataManager = new TestDataManager(configuration);
 
-            // Intialize the random number generator.
-            var random = new Random();
-
             // Initialize a ResultData object.
             var resultData = new ResultData()
             {
