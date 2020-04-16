@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using NationalInstruments.SystemLink.Clients.TestMonitor;
 using NationalInstruments.SystemLink.Clients.File;
+using NationalInstruments.SystemLink.Clients.TestMonitor;
 
 namespace NationalInstruments.SystemLink.Clients.Examples.TestMonitor
 {
