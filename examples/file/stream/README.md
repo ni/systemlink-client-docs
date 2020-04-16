@@ -29,4 +29,4 @@ This example uploads a single file to the SystemLink server.  The file contents 
 The files uploaded to the SystemLink server can be viewed in the [File Web Application](https://localhost/#fileviewer).  The file details can be explored using a web browser:
 ![File Viewer](./FileViewer.png "File Viewer")
 
-Certain file types (ex: txt, png, pdf) can be previewed in the browser.
+Certain file types, such as .txt, .png, or .pdf, can be previewed in the browser.
