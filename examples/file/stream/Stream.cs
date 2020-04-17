@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Text;
 using NationalInstruments.SystemLink.Clients.File;
 
@@ -18,7 +16,7 @@ namespace NationalInstruments.SystemLink.Clients.Examples.File
              * See the configuration example for how a typical application
              * might obtain a configuration.
              */
-            var configuration = ExampleConfiguration.Obtain(args);
+            var configuration = ExampleConfiguration.Obtain(args, false);
 
             // Use the FileUploader for communicating with the server.
             var fileUploader = new FileUploader(configuration);

@@ -9,8 +9,7 @@ Examples for other SystemLink Client APIs are available in the
 Running an Example
 ------------------
 
-Unless otherwise specified by the example's README, each example is run in the
-same way:
+Complete the following steps unless the readme specifies otherwise:
 
 1. Download and extract the [repository source](https://github.com/ni/systemlink-client-docs/archive/master.zip).
 2. Install the [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core).
