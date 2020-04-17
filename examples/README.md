@@ -62,3 +62,4 @@ API Examples
 ### [Test Monitor](testmonitor)
 
 - [Results](testmonitor/results): Demonstrates how to use the SystemLink Test Monitor API to publish test results to the server.
+- [File Attachment](testmonitor/file-attachment): Demonstrates how to use the SystemLink Test Monitor API to attach files that are uploaded to the SystemLink server using the SystemLink File API.
