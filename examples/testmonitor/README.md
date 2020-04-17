@@ -28,4 +28,5 @@ Test Monitor Examples
 ------------
 
 - [Results](results): Demonstrates how to use the SystemLink Test Monitor API to create test results and steps.
+- [File Attachment](file-attachment): Demonstrates how to use the SystemLink Test Monitor API to attach files from the SystemLink server to a test result using the SystemLink File API.
 
