@@ -25,6 +25,17 @@ dotnet run -- --server <url> <username> <password>
 
 For example: `dotnet run -- --server https://my_server admin "my password"`.
 
+Solution File
+-------------
+
+For convenience, the [NISystemLinkClientExamples.sln](NISystemLinkClientExamples.sln)
+[solution file](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-sln)
+can be used to build all example projects at once. Some development environments
+such as [Visual Studio](https://visualstudio.microsoft.com/) also support using
+the solution file to view and run all example projects at once. Note that the
+`dotnet run` command used to run an example requires referencing individual
+projects and does not support the solution file.
+
 Common Examples
 ---------------
 
