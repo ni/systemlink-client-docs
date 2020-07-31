@@ -2,26 +2,75 @@
 
 Contributions to SystemLink Client Docs are welcome from all!
 
-systemlink-client-docs is managed via [git](https://git-scm.com), with the canonical upstream
-repository hosted on [GitHub](https://github.com/ni/systemlink-client-docs).
+systemlink-client-docs is managed via [git](https://git-scm.com), with the
+canonical upstream repository hosted on
+[GitHub](https://github.com/ni/systemlink-client-docs).
 
-systemlink-client-docs follows a pull-request model for development.  If you wish to
-contribute, you will need to create a GitHub account, fork this project, push a
-branch with your changes to your project, and then submit a pull request.
+systemlink-client-docs follows a pull-request model for development. If you
+wish to contribute, you will need to create a GitHub account, fork this
+project, push a branch with your changes to your project, and then submit a
+pull request.
 
-See [GitHub's official documentation](https://help.github.com/articles/using-pull-requests/) for more details.
+See [GitHub's official documentation](https://help.github.com/articles/using-pull-requests/)
+for more details.
 
-# Getting Started
+## Getting Started
 
-- To build and develop examples, download and install the [.NET Core SDK](https://dotnet.microsoft.com/download) for your platform.
-- Use `dotnet build` and `dotnet run` commands in each example directory to build and run the example.
+- To build and develop examples, download and install the
+  [.NET Core SDK](https://dotnet.microsoft.com/download) for your platform.
+- Use `dotnet build` and `dotnet run` commands in each example directory to
+  build and run the example.
 - Use `dotnet new` and `dotnet add package` commands to create new examples.
 
-# Testing
+## Testing
 
-- Each example must build and run independently using the `dotnet` command-line tool.
+- Each example must build and run independently using the `dotnet` command-line
+  tool.
+- PR builds will verify each example project builds, but developers are
+  expected to verify they run with each configuration before submitting a
+  pull request.
 
-# Developer Certificate of Origin (DCO)
+## Adding a New Example
+
+When creating a new example project, developers should complete the following
+steps:
+
+- Create a directory named `examples/<API>/<example-name>`
+- Use `dotnet new console` to create the a project within the new directory
+- Use `dotnet add package Microsoft.CodeAnalysis.FxCopAnalyzers` to enable code
+  analysis for the project
+- Use `dotnet add package NationalInstruments.SystemLink.Clients.<API>` to
+  include the API (or APIs) being demonstrated in the example
+- Edit the created csproj file to include the standard ExampleConfiguration.cs
+  source file:
+
+  ```xml
+  <ItemGroup>
+    <Compile Include="../../ExampleConfiguration.cs" />
+  </ItemGroup>
+  ```
+
+- Ensure the csproj is set to build `netcoreapp3.1` as the `TargetFramework`
+- Rename the generated `Program.cs` to `<ExampleName>.cs` and the class to match
+- Obtain a configuration:
+
+  ```csharp
+  /*
+   * See the configuration example for how a typical application
+   * might obtain a configuration.
+   */
+  var configuration = ExampleConfiguration.Obtain(args, allowCloud: ...);
+  ```
+
+- Implement the rest of the example, documenting the code
+- Write a `README.md` describing the example
+- Add links to the new example from the
+  [top-level examples README](examples/README.md) and API-specific README (e.g.
+  [message](examples/message/README.md))
+- Add the example project to the
+  [PR build workflow](.github/workflows/build-examples.yml)
+
+## Developer Certificate of Origin (DCO)
 
    Developer's Certificate of Origin 1.1
 
@@ -51,5 +100,5 @@ See [GitHub's official documentation](https://help.github.com/articles/using-pul
 
 (taken from [developercertificate.org](https://developercertificate.org/))
 
-See [LICENSE](https://github.com/ni/<reponame>/blob/master/LICENSE)
-for details about how \<reponame\> is licensed.
+See [LICENSE](https://github.com/ni/systemlink-client-docs/blob/master/LICENSE)
+for details about how systemlink-client-docs is licensed.
