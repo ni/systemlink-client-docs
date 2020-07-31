@@ -11,6 +11,7 @@ jobs:
     strategy:
       matrix:
         project:
+          # Note to maintainers: when new projects are added, update the branch protection rule https://github.com/ni/systemlink-client-docs/settings/branches
           - asset/utilization/assetUtilization.csproj
           - configuration/configuration.csproj
           - file/stream/stream.csproj
