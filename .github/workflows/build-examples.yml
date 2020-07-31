@@ -1,0 +1,34 @@
+name: Build Examples
+
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    name: Build example ${{ matrix.project }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        project:
+          - asset/utilization/assetUtilization.csproj
+          - configuration/configuration.csproj
+          - file/stream/stream.csproj
+          - message/labview/labview.csproj
+          - message/send_receive/SendReceive.csproj
+          - tag/query/query.csproj
+          - tag/selection/selection.csproj
+          - tag/subscription/subscription.csproj
+          - testmonitor/file-attachment/fileattachment.csproj
+          - testmonitor/results/results.csproj
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.301
+    - name: Install dependencies for ${{ matrix.project }}
+      run: dotnet restore examples/${{ matrix.project }}
+    - name: Build ${{ matrix.project }}
+      run: dotnet build --no-restore examples/${{ matrix.project }}
