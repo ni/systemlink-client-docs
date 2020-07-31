@@ -67,8 +67,8 @@ steps:
 - Add links to the new example from the
   [top-level examples README](examples/README.md) and API-specific README (e.g.
   [message](examples/message/README.md))
-- Add the example project to the
-  [PR build workflow](.github/workflows/build-examples.yml)
+- Add the example project to the solution file in the examples directory using
+  `dotnet sln add <API>/<example-name>`
 
 ## Developer Certificate of Origin (DCO)
 

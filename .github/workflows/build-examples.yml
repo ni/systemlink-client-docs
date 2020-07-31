@@ -6,22 +6,8 @@ on:
 
 jobs:
   build:
-    name: Build example ${{ matrix.project }}
+    name: Build example projects
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        project:
-          # Note to maintainers: when new projects are added, update the branch protection rule https://github.com/ni/systemlink-client-docs/settings/branches
-          - asset/utilization/assetUtilization.csproj
-          - configuration/configuration.csproj
-          - file/stream/stream.csproj
-          - message/labview/labview.csproj
-          - message/send_receive/SendReceive.csproj
-          - tag/query/query.csproj
-          - tag/selection/selection.csproj
-          - tag/subscription/subscription.csproj
-          - testmonitor/file-attachment/fileattachment.csproj
-          - testmonitor/results/results.csproj
 
     steps:
     - uses: actions/checkout@v2
@@ -29,7 +15,7 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.301
-    - name: Install dependencies for ${{ matrix.project }}
-      run: dotnet restore examples/${{ matrix.project }}
-    - name: Build ${{ matrix.project }}
-      run: dotnet build --no-restore examples/${{ matrix.project }}
+    - name: Install dependencies
+      run: dotnet restore examples
+    - name: Build
+      run: dotnet build --no-restore examples
